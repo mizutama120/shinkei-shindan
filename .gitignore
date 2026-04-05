@@ -1,0 +1,7 @@
+node_modules
+dist
+_npm
+_gh
+npm.tgz
+gh.zip
+.claude
