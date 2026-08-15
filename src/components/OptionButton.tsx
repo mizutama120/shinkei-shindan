@@ -9,47 +9,30 @@ export default function OptionButton({ text, selected, onClick }: Props) {
     <button
       onClick={onClick}
       aria-pressed={selected}
-      className={`
-        group relative w-full text-left px-5 py-4 rounded-2xl
-        font-gothic text-sm leading-relaxed text-ink
-        transition-all duration-200
-        border
-        ${
-          selected
-            ? 'border-pink-main bg-[#F9EDE8] shadow-md'
-            : 'border-[rgba(196,169,107,0.3)] bg-off-white hover:bg-[#F9EDE8] hover:border-[rgba(196,169,107,0.6)] hover:-translate-x-1'
-        }
-      `}
+      className="relative w-full text-left px-5 py-4 rounded-2xl transition-all duration-200"
       style={{
-        boxShadow: selected
-          ? '0 4px 20px rgba(212,134,154,0.15)'
-          : '0 2px 12px rgba(196,137,107,0.06)',
+        fontSize: '16px',
+        lineHeight: '1.7',
+        fontFamily: '"Noto Sans JP", sans-serif',
+        fontWeight: selected ? '700' : '400',
+        color: selected ? '#FFFFFF' : '#333333',
+        background: selected ? '#FF7A8A' : '#F2F2F2',
+        border: selected ? '2px solid #FF7A8A' : '2px solid #F2F2F2',
+        boxShadow: selected ? '0 4px 16px rgba(255,122,138,0.3)' : 'none',
+        transform: selected ? 'scale(1.01)' : 'scale(1)',
       }}
     >
       <span className="block pr-8">{text}</span>
 
       {/* チェックマーク */}
-      <span
-        className={`
-          absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full
-          flex items-center justify-center text-xs
-          transition-all duration-200
-          ${selected ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}
-        `}
-        style={{ background: '#C4A96B', color: '#fff' }}
-      >
-        ✓
-      </span>
-
-      {/* hover時の左アクセントライン */}
-      <span
-        className={`
-          absolute left-0 top-3 bottom-3 w-0.5 rounded-full
-          transition-all duration-200
-          ${selected ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}
-        `}
-        style={{ background: '#D4869A' }}
-      />
+      {selected && (
+        <span
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold"
+          style={{ background: 'rgba(255,255,255,0.3)', color: '#fff' }}
+        >
+          ✓
+        </span>
+      )}
     </button>
   );
 }

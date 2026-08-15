@@ -1,48 +1,46 @@
 import { NervousSystemType } from '../data/types';
-import GaugeBar from './GaugeBar';
-import ResultCard from './ResultCard';
 
 type Props = {
   typeData: NervousSystemType;
   onRestart: () => void;
 };
 
-function Particle({ style }: { style: React.CSSProperties }) {
-  return (
-    <span
-      className="absolute pointer-events-none select-none opacity-50"
-      style={{ ...style, color: 'inherit' }}
-    >
-      ✦
-    </span>
-  );
-}
+const TYPE_COLORS: Record<string, { main: string; bg: string; light: string }> = {
+  a: { main: '#FF7A8A', bg: '#FFEEF0', light: '#FFF5F6' },
+  b: { main: '#7FDBC0', bg: '#E0F5EF', light: '#F0FBF8' },
+  c: { main: '#6B6B6B', bg: '#F0F0F0', light: '#F7F7F7' },
+  d: { main: '#FFD966', bg: '#FFF8DC', light: '#FFFBEF' },
+};
 
 export default function ResultScreen({ typeData, onRestart }: Props) {
-  const { color, colorBg, badge, name, sub, gauges, overviewTitle, overview, traits, careTitle, care } = typeData;
+  const { id, badge, name, sub, overviewTitle, overview, notionUrl } = typeData;
+  const palette = TYPE_COLORS[id] ?? TYPE_COLORS.a;
 
   return (
     <div
       className="min-h-screen animate-fade-up"
-      style={{ background: 'linear-gradient(160deg, #FDF0E8 0%, #F5EAF0 50%, #EEE8F5 100%)' }}
+      style={{ background: '#FFFFFF', fontFamily: '"Noto Sans JP", sans-serif' }}
     >
+      {/* 上部アクセントライン */}
+      <div
+        className="h-1.5 w-full"
+        style={{ background: `linear-gradient(90deg, ${palette.main} 0%, #FFFFFF 100%)` }}
+      />
+
       {/* ヒーローセクション */}
       <div
-        className="relative px-5 pt-12 pb-8 overflow-hidden"
-        style={{ background: colorBg }}
+        className="px-5 pt-10 pb-8"
+        style={{ background: palette.light }}
       >
-        <Particle style={{ top: '10%', left: '8%', fontSize: '9px', color, animation: 'float 9s ease-in-out infinite' }} />
-        <Particle style={{ top: '20%', right: '12%', fontSize: '7px', color, animation: 'float 7s ease-in-out infinite 1.5s' }} />
-        <Particle style={{ bottom: '15%', left: '20%', fontSize: '11px', color, animation: 'float 11s ease-in-out infinite 0.5s' }} />
-
         {/* バッジ */}
         <div className="flex justify-center mb-4">
           <span
-            className="inline-block px-5 py-1.5 rounded-full text-xs font-gothic font-medium tracking-[0.2em]"
+            className="inline-block px-5 py-2 rounded-full font-bold tracking-[0.2em]"
             style={{
-              background: `${color}18`,
-              border: `1px solid ${color}55`,
-              color,
+              fontSize: '13px',
+              background: palette.bg,
+              border: `2px solid ${palette.main}`,
+              color: palette.main,
             }}
           >
             {badge}
@@ -51,102 +49,86 @@ export default function ResultScreen({ typeData, onRestart }: Props) {
 
         {/* タイプ名 */}
         <h1
-          className="text-center font-mincho font-bold text-3xl leading-tight mb-2"
-          style={{ color: '#3D2B2B', letterSpacing: '0.03em' }}
+          className="text-center font-bold leading-tight mb-2"
+          style={{ fontSize: '26px', color: '#333333', letterSpacing: '0.03em' }}
         >
           {name}
         </h1>
-        <p className="text-center font-gothic text-xs text-ink-soft tracking-wide mb-7">
+        <p
+          className="text-center mb-0"
+          style={{ fontSize: '15px', color: '#666666' }}
+        >
           {sub}
         </p>
-
-        {/* ゲージ */}
-        <div
-          className="rounded-2xl p-5"
-          style={{
-            background: 'rgba(255,252,248,0.7)',
-            border: '1px solid rgba(196,169,107,0.2)',
-          }}
-        >
-          {gauges.map((g, i) => (
-            <GaugeBar key={g.label} label={g.label} value={g.value} color={color} delay={i * 150} />
-          ))}
-        </div>
       </div>
 
-      {/* カード群 */}
-      <div className="px-4 pt-6 pb-4">
-
-        {/* カード1：このタイプについて */}
-        <ResultCard label="このタイプについて">
-          <h3
-            className="font-mincho font-bold text-base text-ink leading-snug mb-3"
-            style={{ letterSpacing: '0.02em' }}
+      {/* 説明セクション */}
+      <div className="px-5 pt-6 pb-4">
+        <div
+          className="rounded-3xl p-6 mb-5"
+          style={{
+            background: '#FFFFF7',
+            border: `2px solid ${palette.bg}`,
+          }}
+        >
+          <h2
+            className="font-bold mb-4"
+            style={{ fontSize: '18px', color: '#333333', letterSpacing: '0.02em' }}
           >
             {overviewTitle}
-          </h3>
+          </h2>
           <p
-            className="font-gothic text-sm text-ink leading-[1.9] font-light"
+            className="leading-[2.0]"
+            style={{ fontSize: '16px', color: '#333333' }}
             dangerouslySetInnerHTML={{ __html: overview }}
           />
-        </ResultCard>
-
-        {/* カード2：チェックリスト */}
-        <ResultCard label="こんな傾向ありませんか？">
-          <ul className="space-y-3">
-            {traits.map((trait, i) => (
-              <li key={i} className="flex items-start gap-3 font-gothic text-sm text-ink leading-relaxed font-light">
-                <span
-                  className="flex-shrink-0 w-2 h-2 rounded-full mt-1.5"
-                  style={{ background: color }}
-                />
-                {trait}
-              </li>
-            ))}
-          </ul>
-        </ResultCard>
-
-        {/* カード3：今すぐできること */}
-        <ResultCard label={careTitle}>
-          <div className="space-y-5">
-            {care.map((item, i) => (
-              <div key={i} className="flex gap-4">
-                <span
-                  className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-gothic font-bold text-white mt-0.5"
-                  style={{ background: color }}
-                >
-                  {i + 1}
-                </span>
-                <div>
-                  <p
-                    className="font-gothic text-sm font-medium text-ink mb-1"
-                    style={{ letterSpacing: '0.01em' }}
-                  >
-                    {item.title}
-                  </p>
-                  <p className="font-gothic text-xs text-ink-soft leading-[1.8] font-light">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </ResultCard>
-
-        {/* CTA */}
-        <div className="mt-6 flex flex-col items-center gap-4">
-          <button
-            onClick={onRestart}
-            className="font-gothic text-sm text-ink-soft hover:text-ink transition-colors underline underline-offset-4"
-            style={{ textDecorationColor: 'rgba(196,169,107,0.5)' }}
-          >
-            もう一度診断する
-          </button>
-
-          <p className="font-gothic text-[10px] text-ink-soft tracking-wider mt-1">
-            つむぎ｜神経科学オタク
-          </p>
         </div>
+
+        {/* Notionリンクボタン */}
+        <a
+          href={notionUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-3 w-full py-5 rounded-2xl font-bold text-white transition-all duration-200 hover:-translate-y-0.5 active:scale-95 mb-5"
+          style={{
+            fontSize: '17px',
+            background: `linear-gradient(135deg, ${palette.main} 0%, ${palette.main}CC 100%)`,
+            boxShadow: `0 6px 20px ${palette.main}40`,
+            textDecoration: 'none',
+          }}
+        >
+          <span>📖</span>
+          <span>あなたのタイプを深掘りする</span>
+          <span style={{ fontSize: '14px', opacity: 0.8 }}>→</span>
+        </a>
+
+        {/* 区切り線 */}
+        <div className="flex items-center gap-3 my-6">
+          <div className="flex-1 h-px" style={{ background: '#F2F2F2' }} />
+          <span style={{ fontSize: '13px', color: '#999999' }}>または</span>
+          <div className="flex-1 h-px" style={{ background: '#F2F2F2' }} />
+        </div>
+
+        {/* もう一度診断するボタン */}
+        <button
+          onClick={onRestart}
+          className="w-full py-4 rounded-2xl font-bold transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+          style={{
+            fontSize: '16px',
+            color: '#666666',
+            background: '#F2F2F2',
+            border: 'none',
+          }}
+        >
+          もう一度診断する
+        </button>
+
+        <p
+          className="text-center mt-5"
+          style={{ fontSize: '13px', color: '#999999' }}
+        >
+          つむぎ｜神経科学オタク
+        </p>
       </div>
     </div>
   );

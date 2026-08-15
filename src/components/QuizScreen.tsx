@@ -19,7 +19,7 @@ export default function QuizScreen({
   const [selected, setSelected] = useState<number | null>(null);
   const [visible, setVisible] = useState(false);
 
-  // 問題が変わるたびにアニメーションリセット
+  // 問いが変わるたびに選択状態とアニメーションをリセット
   useEffect(() => {
     setSelected(null);
     setVisible(false);
@@ -30,16 +30,12 @@ export default function QuizScreen({
   const handleSelect = (idx: number) => {
     if (selected !== null) return;
     setSelected(idx);
-    onSelect(idx);
+    // 選択色を少し見せてから次の問いへ
+    setTimeout(() => onSelect(idx), 350);
   };
 
   return (
-    <div
-      className="min-h-screen flex flex-col"
-      style={{
-        background: 'linear-gradient(160deg, #FDF0E8 0%, #F5EAF0 50%, #EEE8F5 100%)',
-      }}
-    >
+    <div className="min-h-screen flex flex-col" style={{ background: '#FFFFFF' }}>
       <ProgressBar current={questionIndex + 1} total={totalQuestions} />
 
       <div
@@ -51,16 +47,16 @@ export default function QuizScreen({
       >
         {/* Q番号 */}
         <p
-          className="font-gothic text-xs font-medium tracking-[0.2em] mb-3"
-          style={{ color: '#D4869A' }}
+          className="font-main text-sm font-bold tracking-[0.15em] mb-3"
+          style={{ color: '#FF7A8A' }}
         >
           Q{questionIndex + 1}
         </p>
 
         {/* 質問文 */}
         <h2
-          className="font-mincho font-bold text-ink text-lg leading-[1.7] mb-7"
-          style={{ letterSpacing: '0.02em' }}
+          className="font-main font-bold text-charcoal leading-[1.8] mb-7"
+          style={{ fontSize: '18px', letterSpacing: '0.02em' }}
         >
           {question.text}
         </h2>
