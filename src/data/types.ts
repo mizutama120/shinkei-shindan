@@ -4,6 +4,7 @@ export type NervousSystemType = {
   colorBg: string;
   badge: string;
   name: string;
+  nickname: string;
   sub: string;
   gauges: { label: string; value: number }[];
   overviewTitle: string;
@@ -22,6 +23,7 @@ export const types: Record<string, NervousSystemType> = {
     colorBg: 'rgba(255,122,138,0.08)',
     badge: '🔥 TYPE A',
     name: 'がんばりすぎ覚醒タイプ',
+    nickname: 'アクセルモードさん',
     sub: '交感神経がオンになったまま戻れない',
     gauges: [
       { label: '交感神経の活性度', value: 88 },
@@ -50,7 +52,7 @@ export const types: Record<string, NervousSystemType> = {
       },
     ],
     teaserBlurred: '覚醒タイプが陥りやすいパターン・深夜に崩れる理由……',
-    notionUrl: 'https://app.notion.com/p/A-33c6b6bdfd8c816bbb8ffe61407a21dd',
+    notionUrl: 'https://tsumugi-lab.notion.site/A-daa8cf5282e783b9830a81ebdbd3ee2c',
   },
   b: {
     id: 'b',
@@ -58,6 +60,7 @@ export const types: Record<string, NervousSystemType> = {
     colorBg: 'rgba(184,229,217,0.2)',
     badge: '🔋 TYPE B',
     name: 'ゆるみすぎ低覚醒タイプ',
+    nickname: '省エネモードさん',
     sub: '活動レベルが上がりにくく、動き出しが重い',
     gauges: [
       { label: '活動レベルの低さ', value: 85 },
@@ -86,7 +89,7 @@ export const types: Record<string, NervousSystemType> = {
       },
     ],
     teaserBlurred: '低覚醒タイプが動き出しやすくなる時間帯・刺激の使い方・活動リズムの整え方……',
-    notionUrl: 'https://app.notion.com/p/B-33c6b6bdfd8c81a7bab1c8fcb6d77a31',
+    notionUrl: 'https://tsumugi-lab.notion.site/B-fe68cf5282e78360ba0a818ddea51517',
   },
   c: {
     id: 'c',
@@ -94,6 +97,7 @@ export const types: Record<string, NervousSystemType> = {
     colorBg: 'rgba(107,107,107,0.08)',
     badge: '🧊 TYPE C',
     name: '固まりフリーズタイプ',
+    nickname: 'フリーズモードさん',
     sub: '緊張しているのに、体が動かない',
     gauges: [
       { label: '緊張度（交感神経）', value: 80 },
@@ -122,7 +126,7 @@ export const types: Record<string, NervousSystemType> = {
       },
     ],
     teaserBlurred: 'フリーズタイプが安全信号を受け取りやすくなる場面・緊張が解ける順番……',
-    notionUrl: 'https://app.notion.com/p/C-33c6b6bdfd8c81daa400f446194aca55',
+    notionUrl: 'https://tsumugi-lab.notion.site/C-3198cf5282e782b6b44781a0b240d995',
   },
   d: {
     id: 'd',
@@ -130,6 +134,7 @@ export const types: Record<string, NervousSystemType> = {
     colorBg: 'rgba(255,217,102,0.12)',
     badge: '🌊 TYPE D',
     name: '波が大きいタイプ',
+    nickname: 'ゆらぎモードさん',
     sub: 'スイッチのオンオフが激しく切り替わる',
     gauges: [
       { label: '感情・状態の振れ幅', value: 86 },
@@ -158,6 +163,6 @@ export const types: Record<string, NervousSystemType> = {
       },
     ],
     teaserBlurred: '波のパターンに隠れた神経系の仕組み・底上げのための習慣設計……',
-    notionUrl: 'https://app.notion.com/p/D-33c6b6bdfd8c81a6adc4e34038cd23ae',
+    notionUrl: 'https://tsumugi-lab.notion.site/D-3548cf5282e782a9a94a01ef09b87b44',
   },
 };

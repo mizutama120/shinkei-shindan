@@ -13,7 +13,7 @@ export default function ProgressBar({ current, total }: Props) {
           className="text-sm font-main font-bold"
           style={{ color: '#FF7A8A', fontFamily: '"Noto Sans JP", sans-serif' }}
         >
-          つむぎの神経系ラボ
+          神経モード診断
         </span>
         <span className="text-sm font-main" style={{ color: '#666666', fontFamily: '"Noto Sans JP", sans-serif' }}>
           <span className="font-bold" style={{ color: '#FF7A8A' }}>{current}</span>
@@ -33,7 +33,7 @@ export default function ProgressBar({ current, total }: Props) {
           className="h-full rounded-full transition-all duration-500 ease-out"
           style={{
             width: `${pct}%`,
-            background: 'linear-gradient(90deg, #FF7A8A 0%, #7FDBC0 100%)',
+            background: '#FF7A8A',
           }}
         />
       </div>

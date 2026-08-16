@@ -13,7 +13,7 @@ const TYPE_COLORS: Record<string, { main: string; bg: string; light: string }> =
 };
 
 export default function ResultScreen({ typeData, onRestart }: Props) {
-  const { id, badge, name, sub, overviewTitle, overview, notionUrl } = typeData;
+  const { id, badge, name, nickname, sub, overviewTitle, overview, notionUrl } = typeData;
   const palette = TYPE_COLORS[id] ?? TYPE_COLORS.a;
 
   return (
@@ -33,7 +33,7 @@ export default function ResultScreen({ typeData, onRestart }: Props) {
         style={{ background: palette.light }}
       >
         {/* バッジ */}
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-3">
           <span
             className="inline-block px-5 py-2 rounded-full font-bold tracking-[0.2em]"
             style={{
@@ -49,14 +49,24 @@ export default function ResultScreen({ typeData, onRestart }: Props) {
 
         {/* タイプ名 */}
         <h1
-          className="text-center font-bold leading-tight mb-2"
-          style={{ fontSize: '26px', color: '#333333', letterSpacing: '0.03em' }}
+          className="text-center font-bold leading-tight mb-1"
+          style={{ fontSize: '24px', color: '#333333', letterSpacing: '0.03em' }}
         >
           {name}
         </h1>
+
+        {/* ニックネーム */}
+        <p
+          className="text-center font-bold mb-2"
+          style={{ fontSize: '18px', color: palette.main }}
+        >
+          {nickname}
+        </p>
+
+        {/* サブキャッチ */}
         <p
           className="text-center mb-0"
-          style={{ fontSize: '15px', color: '#666666' }}
+          style={{ fontSize: '14px', color: '#666666' }}
         >
           {sub}
         </p>
@@ -84,6 +94,18 @@ export default function ResultScreen({ typeData, onRestart }: Props) {
           />
         </div>
 
+        {/* むぎマスコット */}
+        <div className="flex justify-center my-4">
+          <img
+            src="/mugi-result.png"
+            alt="むぎ"
+            style={{ width: '90px', height: 'auto', opacity: 0.92 }}
+          />
+        </div>
+        <p className="text-center mb-4" style={{ fontSize: '13px', color: '#888888' }}>
+          診断おつかれさま。あなたに合う整え方を一緒に見ていこう。
+        </p>
+
         {/* Notionリンクボタン */}
         <a
           href={notionUrl}
@@ -98,7 +120,7 @@ export default function ResultScreen({ typeData, onRestart }: Props) {
           }}
         >
           <span>📖</span>
-          <span>あなたのタイプを深掘りする</span>
+          <span>あなたに合う整え方を見る</span>
           <span style={{ fontSize: '14px', opacity: 0.8 }}>→</span>
         </a>
 
