@@ -5,7 +5,7 @@ type Props = {
 export default function StartScreen({ onStart }: Props) {
   return (
     <div
-      className="relative min-h-screen flex flex-col items-center justify-center px-5 py-8 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-5 py-6 overflow-hidden"
       style={{ background: '#FFF5F6', fontFamily: '"Noto Sans JP", sans-serif' }}
     >
       <div className="relative z-10 w-full max-w-sm animate-fade-up">
@@ -25,29 +25,31 @@ export default function StartScreen({ onStart }: Props) {
           <div className="h-px flex-1" style={{ background: '#FFBFC7' }} />
         </div>
 
-        {/* サブタイトル */}
-        <p
-          className="text-center font-bold mb-1"
-          style={{ fontSize: '13px', color: '#FF7A8A' }}
-        >
-          今のあなたをチェック
-        </p>
-
-        {/* メインタイトル */}
-        <h1
-          className="text-center font-bold mb-2"
-          style={{ fontSize: '32px', color: '#333333', letterSpacing: '0.04em', lineHeight: 1.2 }}
-        >
-          神経モード診断
-        </h1>
-
-        {/* 3ドット */}
-        <p className="text-center mb-2" style={{ color: '#FFBFC7', fontSize: '14px', letterSpacing: '0.3em' }}>— ... —</p>
-
-        {/* リード文 */}
-        <p className="text-center mb-3" style={{ fontSize: '14px', color: '#555555' }}>
-          12問で、今のわたしに合う整え方がわかる。
-        </p>
+        {/* タイトル + むぎ（横並び） */}
+        <div className="flex items-end gap-3 mb-3">
+          <div className="flex-1">
+            <p
+              className="font-bold mb-1"
+              style={{ fontSize: '13px', color: '#FF7A8A' }}
+            >
+              今のあなたをチェック
+            </p>
+            <h1
+              className="font-bold mb-2"
+              style={{ fontSize: '30px', color: '#333333', letterSpacing: '0.04em', lineHeight: 1.1 }}
+            >
+              神経モード診断
+            </h1>
+            <p style={{ fontSize: '13px', color: '#555555', lineHeight: 1.6 }}>
+              12問で、今のわたしに合う<br />整え方がわかる。
+            </p>
+          </div>
+          <img
+            src="/mugi-top.png"
+            alt="むぎ"
+            style={{ width: '85px', height: 'auto', flexShrink: 0 }}
+          />
+        </div>
 
         {/* バッジ行 */}
         <div className="flex justify-center gap-3 mb-4">
@@ -72,18 +74,9 @@ export default function StartScreen({ onStart }: Props) {
           ))}
         </div>
 
-        {/* むぎマスコット */}
-        <div className="flex justify-center mb-3">
-          <img
-            src="/mugi-top.png"
-            alt="むぎ"
-            style={{ width: '100px', height: 'auto' }}
-          />
-        </div>
-
         {/* メインカード */}
         <div
-          className="rounded-3xl px-5 py-5 mb-5"
+          className="rounded-3xl px-5 py-4 mb-5"
           style={{
             background: '#FFFFFF',
             border: '1.5px solid #FFD6DB',
@@ -108,14 +101,11 @@ export default function StartScreen({ onStart }: Props) {
             </div>
           </div>
 
-          {/* 区切り */}
-          <p className="text-center mb-2" style={{ color: '#FFBFC7', fontSize: '13px', letterSpacing: '0.3em' }}>...</p>
-
           <p className="text-center mb-1" style={{ fontSize: '14px', color: '#555555' }}>それは、</p>
 
           <p
             className="text-center font-bold mb-1"
-            style={{ fontSize: '20px', color: '#FF7A8A', lineHeight: 1.3 }}
+            style={{ fontSize: '19px', color: '#FF7A8A', lineHeight: 1.3 }}
           >
             今の神経系のモード
           </p>
@@ -124,10 +114,7 @@ export default function StartScreen({ onStart }: Props) {
             が関係しているかもしれません。
           </p>
 
-          {/* 区切り */}
-          <p className="text-center mb-3" style={{ color: '#FFBFC7', fontSize: '13px', letterSpacing: '0.3em' }}>...</p>
-
-          <p className="text-center" style={{ fontSize: '14px', color: '#555555', lineHeight: 1.8 }}>
+          <p className="text-center" style={{ fontSize: '13px', color: '#777777', lineHeight: 1.7 }}>
             12問・約3分で、今のあなたに合う<br />整え方を見つけます。
           </p>
         </div>
@@ -147,7 +134,7 @@ export default function StartScreen({ onStart }: Props) {
         </button>
 
         <p
-          className="text-center mt-4"
+          className="text-center mt-3"
           style={{ fontSize: '12px', color: '#AAAAAA' }}
         >
           つむぎ | 神経科学オタク

@@ -47,10 +47,10 @@ export default function QuizScreen({
       >
         {/* Q番号 */}
         <p
-          className="font-main text-sm font-bold tracking-[0.15em] mb-3"
-          style={{ color: '#FF7A8A' }}
+          className="font-main font-bold tracking-[0.15em] mb-3"
+          style={{ color: '#FF7A8A', fontSize: '16px' }}
         >
-          Q{questionIndex + 1}
+          Q{questionIndex + 1}<span style={{ fontSize: '13px', color: '#BBBBBB', marginLeft: '6px' }}>/ {totalQuestions}</span>
         </p>
 
         {/* 質問文 */}

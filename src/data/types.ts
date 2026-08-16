@@ -93,8 +93,8 @@ export const types: Record<string, NervousSystemType> = {
   },
   c: {
     id: 'c',
-    color: '#6B6B6B',
-    colorBg: 'rgba(107,107,107,0.08)',
+    color: '#5B8DEF',
+    colorBg: 'rgba(91,141,239,0.10)',
     badge: '🧊 TYPE C',
     name: '固まりフリーズタイプ',
     nickname: 'フリーズモードさん',

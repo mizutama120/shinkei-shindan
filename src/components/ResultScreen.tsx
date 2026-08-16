@@ -8,7 +8,7 @@ type Props = {
 const TYPE_COLORS: Record<string, { main: string; bg: string; light: string }> = {
   a: { main: '#FF7A8A', bg: '#FFEEF0', light: '#FFF5F6' },
   b: { main: '#7FDBC0', bg: '#E0F5EF', light: '#F0FBF8' },
-  c: { main: '#6B6B6B', bg: '#F0F0F0', light: '#F7F7F7' },
+  c: { main: '#5B8DEF', bg: '#E8F0FE', light: '#F4F8FF' },
   d: { main: '#FFD966', bg: '#FFF8DC', light: '#FFFBEF' },
 };
 
@@ -102,8 +102,9 @@ export default function ResultScreen({ typeData, onRestart }: Props) {
             style={{ width: '90px', height: 'auto', opacity: 0.92 }}
           />
         </div>
-        <p className="text-center mb-4" style={{ fontSize: '13px', color: '#888888' }}>
-          診断おつかれさま。あなたに合う整え方を一緒に見ていこう。
+        <p className="text-center mb-4" style={{ fontSize: '13px', color: '#888888', lineHeight: 1.9 }}>
+          診断おつかれさまでした<br />
+          あなたに合う整え方を一緒にみていきましょう
         </p>
 
         {/* Notionリンクボタン */}
