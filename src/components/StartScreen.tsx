@@ -5,29 +5,30 @@ type Props = {
 export default function StartScreen({ onStart }: Props) {
   return (
     <div
-      className="relative min-h-screen flex flex-col items-center justify-center px-5 py-6 overflow-hidden"
+      className="px-5 pt-8 pb-6"
       style={{ background: '#FFF5F6', fontFamily: '"Noto Sans JP", sans-serif' }}
     >
-      <div className="relative z-10 w-full max-w-sm animate-fade-up">
+      <div className="max-w-sm mx-auto animate-fade-up">
 
         {/* ブランド名 */}
         <p
-          className="text-center font-bold tracking-widest mb-1"
+          className="text-center font-bold tracking-widest mb-2"
           style={{ fontSize: '11px', color: '#FF7A8A', letterSpacing: '0.18em' }}
         >
           TSUMUGI NERVOUS SYSTEM LAB.
         </p>
 
         {/* デコレーション線 */}
-        <div className="flex items-center justify-center gap-2 mb-3">
+        <div className="flex items-center justify-center gap-2 mb-4">
           <div className="h-px flex-1" style={{ background: '#FFBFC7' }} />
           <span style={{ fontSize: '12px', color: '#FF7A8A' }}>♥</span>
           <div className="h-px flex-1" style={{ background: '#FFBFC7' }} />
         </div>
 
-        {/* タイトル + むぎ（横並び） */}
-        <div className="flex items-end gap-3 mb-3">
-          <div className="flex-1">
+        {/* タイトル（中央）+ むぎ（右） — 左スペーサーで視覚的に中央揃えを維持 */}
+        <div className="flex items-start gap-2 mb-1">
+          <div style={{ width: '76px', flexShrink: 0 }} />
+          <div className="flex-1 text-center">
             <p
               className="font-bold mb-1"
               style={{ fontSize: '13px', color: '#FF7A8A' }}
@@ -35,21 +36,26 @@ export default function StartScreen({ onStart }: Props) {
               今のあなたをチェック
             </p>
             <h1
-              className="font-bold mb-2"
-              style={{ fontSize: '30px', color: '#333333', letterSpacing: '0.04em', lineHeight: 1.1 }}
+              className="font-bold"
+              style={{ fontSize: '30px', color: '#333333', letterSpacing: '0.04em', lineHeight: 1.15 }}
             >
               神経モード診断
             </h1>
-            <p style={{ fontSize: '13px', color: '#555555', lineHeight: 1.6 }}>
-              12問で、今のわたしに合う<br />整え方がわかる。
-            </p>
           </div>
           <img
             src="/mugi-top.png"
             alt="むぎ"
-            style={{ width: '85px', height: 'auto', flexShrink: 0 }}
+            style={{ width: '76px', flexShrink: 0, marginTop: '4px' }}
           />
         </div>
+
+        {/* 説明文（全幅で中央） */}
+        <p
+          className="text-center mb-4"
+          style={{ fontSize: '13px', color: '#666666' }}
+        >
+          12問で、今のわたしに合う整え方がわかる。
+        </p>
 
         {/* バッジ行 */}
         <div className="flex justify-center gap-3 mb-4">
@@ -76,14 +82,13 @@ export default function StartScreen({ onStart }: Props) {
 
         {/* メインカード */}
         <div
-          className="rounded-3xl px-5 py-4 mb-5"
+          className="rounded-3xl px-5 py-4 mb-4"
           style={{
             background: '#FFFFFF',
             border: '1.5px solid #FFD6DB',
             boxShadow: '0 4px 20px rgba(255,122,138,0.08)',
           }}
         >
-          {/* 吹き出し1 */}
           <div
             className="inline-block px-4 py-2 rounded-2xl rounded-tl-sm mb-2"
             style={{ background: '#FFF0F2', fontSize: '14px', color: '#333333' }}
@@ -91,7 +96,6 @@ export default function StartScreen({ onStart }: Props) {
             『なんか調子悪い』
           </div>
 
-          {/* 吹き出し2 */}
           <div className="flex justify-end mb-3">
             <div
               className="inline-block px-4 py-2 rounded-2xl rounded-tr-sm"
