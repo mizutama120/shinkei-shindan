@@ -25,34 +25,31 @@ export default function StartScreen({ onStart }: Props) {
           <div className="h-px flex-1" style={{ background: '#FFBFC7' }} />
         </div>
 
-        {/* タイトル（中央）+ むぎ（右） — 左スペーサーで視覚的に中央揃えを維持 */}
-        <div className="flex items-start gap-2 mb-1">
-          <div style={{ width: '76px', flexShrink: 0 }} />
-          <div className="flex-1 text-center">
-            <p
-              className="font-bold mb-1"
-              style={{ fontSize: '13px', color: '#FF7A8A' }}
-            >
-              今のあなたをチェック
-            </p>
-            <h1
-              className="font-bold"
-              style={{ fontSize: '30px', color: '#333333', letterSpacing: '0.04em', lineHeight: 1.15 }}
-            >
-              神経モード診断
-            </h1>
-          </div>
+        {/* タイトル（全幅中央）+ むぎ（右上に絶対配置） */}
+        <div className="relative mb-3">
+          <p
+            className="text-center font-bold mb-1"
+            style={{ fontSize: '13px', color: '#FF7A8A' }}
+          >
+            今のあなたをチェック
+          </p>
+          <h1
+            className="text-center font-bold"
+            style={{ fontSize: '28px', color: '#333333', lineHeight: 1.2 }}
+          >
+            神経モード診断
+          </h1>
           <img
             src="/mugi-top.png"
             alt="むぎ"
-            style={{ width: '76px', flexShrink: 0, marginTop: '4px' }}
+            style={{ position: 'absolute', right: 0, top: 0, width: '68px', height: 'auto' }}
           />
         </div>
 
-        {/* 説明文（全幅で中央） */}
+        {/* 説明文 */}
         <p
           className="text-center mb-4"
-          style={{ fontSize: '13px', color: '#666666' }}
+          style={{ fontSize: '13px', color: '#666666', marginTop: '-4px' }}
         >
           12問で、今のわたしに合う整え方がわかる。
         </p>
