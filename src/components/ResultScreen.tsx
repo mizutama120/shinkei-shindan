@@ -21,17 +21,16 @@ export default function ResultScreen({ typeData, onRestart }: Props) {
       className="min-h-screen animate-fade-up"
       style={{ background: '#FFFFFF', fontFamily: '"Noto Sans JP", sans-serif' }}
     >
-      {/* 上部アクセントライン */}
-      <div
-        className="h-1.5 w-full"
-        style={{ background: `linear-gradient(90deg, ${palette.main} 0%, #FFFFFF 100%)` }}
-      />
-
-      {/* ヒーローセクション */}
+      {/* ヒーローセクション（アクセントライン含む） */}
       <div
         className="px-5 pb-8"
         style={{ background: palette.light, paddingTop: '130px' }}
       >
+        {/* 上部アクセントライン */}
+        <div
+          className="h-1.5 w-full mb-6 -mx-5"
+          style={{ background: `linear-gradient(90deg, ${palette.main} 0%, #FFFFFF 100%)`, width: 'calc(100% + 40px)', marginTop: '-8px' }}
+        />
         {/* バッジ */}
         <div className="flex justify-center mb-3">
           <span
