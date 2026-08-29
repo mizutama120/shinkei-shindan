@@ -9,7 +9,7 @@ export default function StartScreen({ onStart }: Props) {
       style={{
         background: '#FFF5F6',
         fontFamily: '"Noto Sans JP", sans-serif',
-        paddingTop: '100px',
+        paddingTop: '130px',
       }}
     >
       <div className="max-w-sm mx-auto animate-fade-up">
