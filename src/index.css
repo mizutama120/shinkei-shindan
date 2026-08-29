@@ -21,7 +21,9 @@
     background-color: #FFFFFF;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    /* overflow-x: hidden はiOSでbodyスクロールコンテナを作りbodyのscrollTopを
+       自動設定してしまうため、スクロールコンテキストを作らないclipに変更 */
+    overflow-x: clip;
   }
 
   strong {
