@@ -29,8 +29,8 @@ export default function ResultScreen({ typeData, onRestart }: Props) {
 
       {/* ヒーローセクション */}
       <div
-        className="px-5 pt-10 pb-8"
-        style={{ background: palette.light }}
+        className="px-5 pb-8"
+        style={{ background: palette.light, paddingTop: '130px' }}
       >
         {/* バッジ */}
         <div className="flex justify-center mb-3">
