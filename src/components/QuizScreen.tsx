@@ -35,7 +35,7 @@ export default function QuizScreen({
   };
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: '#FFFFFF' }}>
+    <div className="min-h-screen flex flex-col" style={{ background: '#FFFFFF', paddingTop: 'var(--inapp-top, 0px)' }}>
       <ProgressBar current={questionIndex + 1} total={totalQuestions} />
 
       <div

@@ -5,8 +5,12 @@ type Props = {
 export default function StartScreen({ onStart }: Props) {
   return (
     <div
-      className="min-h-screen px-5 pt-8 pb-6"
-      style={{ background: '#FFF5F6', fontFamily: '"Noto Sans JP", sans-serif' }}
+      className="min-h-screen px-5 pb-6"
+      style={{
+        background: '#FFF5F6',
+        fontFamily: '"Noto Sans JP", sans-serif',
+        paddingTop: 'calc(32px + var(--inapp-top, 0px))',
+      }}
     >
       <div className="max-w-sm mx-auto animate-fade-up">
 
