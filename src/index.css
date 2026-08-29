@@ -76,6 +76,14 @@
   animation: fadeUp 0.4s ease forwards;
 }
 
+/* iOS SafariのVHバグ修正
+   100vh = アドレスバー非表示時の高さ → アドレスバーが出ると上部が隠れる
+   100svh = アドレスバーを含む正確な表示領域の高さ */
+.min-h-screen {
+  min-height: 100vh; /* フォールバック */
+  min-height: 100svh; /* iOS 15.4+: アドレスバーを正しく考慮 */
+}
+
 /* スクロールバー非表示（モバイル用） */
 ::-webkit-scrollbar {
   display: none;
